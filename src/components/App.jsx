@@ -1,38 +1,30 @@
-import React from "react";
+import {useState} from "react";
 import { Searchbar } from "./Searchbar/Searchbar";
 import { ImageGallery } from "./ImageGallery/ImageGallery";
 import { Button } from "./Button/Button";
 import { Container } from "./App.styled";
 
 
-class App extends React.Component {
-  state = {
-    input: '',
-    page: 0,
+export default function App() {
+  const [input, setInput] = useState('')
+  const [page, setPage] = useState(0)
+
+  const handleFormSubmit = (input, page) => {
+    setInput(input)
+    setPage(page)
   }
 
-  handleFormSubmit = (input, page) => {
-    this.setState({input, page})
+  const loadMore = () => {
+    setPage(prevState => prevState + 1)
   }
-
-  loadMore = () => {
-    this.setState(prevState => ({
-      page: prevState.page + 1.
-    }))
-  }
-
-  render() {
 
     return(
       <Container>
-      <Searchbar onSubmit={this.handleFormSubmit}/>
-      <ImageGallery input={this.state.input} page={this.state.page}/>
-      {this.state.page >= 1 && (
-        <Button onClick={this.loadMore}/>
+      <Searchbar onSubmit={handleFormSubmit}/>
+      <ImageGallery input={input} page={page}/>
+      {page >= 1 && (
+        <Button onClick={loadMore}/>
       )}
       </Container>
     )
-  }
 }
-
-export {App}
