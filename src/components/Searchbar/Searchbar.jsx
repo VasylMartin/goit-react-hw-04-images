@@ -1,5 +1,6 @@
 import {useState} from "react";
 import PropTypes from 'prop-types';
+import { SearchContainer, SearchForm, SearchFormButton, SearchFormButtonLabel, SearchFormInput } from "./Searchbar.styler";
 
 export default function Searchbar({onSubmit}) {
     const [input, setInput] = useState('')
@@ -23,13 +24,13 @@ export default function Searchbar({onSubmit}) {
     }
     
         return (
-            <header>
-                <form onSubmit={handleSubmit}>
-                    <button type="submit">
-                    <span>Search</span>
-                    </button>
+            <SearchContainer>
+                <SearchForm onSubmit={handleSubmit}>
+                    <SearchFormButton type="submit">
+                    <SearchFormButtonLabel>Search</SearchFormButtonLabel>
+                    </SearchFormButton>
     
-                    <input
+                    <SearchFormInput
                         type="text"
                         autoComplete="off"
                         autoFocus
@@ -37,8 +38,8 @@ export default function Searchbar({onSubmit}) {
                         onChange={handleInputChange}
                         value={input}
                     />
-                </form>
-            </header>
+                </SearchForm>
+            </SearchContainer>
         )
 }
 
