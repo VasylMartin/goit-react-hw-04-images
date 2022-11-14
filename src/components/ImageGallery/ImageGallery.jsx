@@ -1,7 +1,7 @@
 import { ImageGalleryItem } from "components/ImageGalleryItem/ImageGalleryItem";
 import { Loader } from "components/Loader/Loader";
 import {useState, useEffect} from "react";
-import { Modal } from "components/Modal/Modal";
+import Modal from "components/Modal/Modal";
 import { GalleryContainer } from "./ImageGallery.styled";
 import PropTypes from 'prop-types';
 
